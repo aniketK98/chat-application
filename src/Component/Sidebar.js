@@ -26,7 +26,6 @@ function Sidebar(props) {
   const searchUser = async (e) => {
     setSearchInput(e.target.value);
     const result = await httpMethods.searchUser(searchInput);
-    console.log("users -", result.data);
     setSearchResult(result.data);
   };
 
