@@ -4,6 +4,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { reset, loginUser } from "../Features/authSlice";
+import { toast } from "react-toastify";
 
 function Login() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function Login() {
 
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      toast.error(message);
     }
     if (isSuccess || user) {
       navigate("/");
@@ -45,13 +46,12 @@ function Login() {
   }
   const onSubmit = (e) => {
     e.preventDefault();
-    
+
     const userData = { phoneNumber: phone, password };
     if (validatePhoneNumber(phone)) {
       dispatch(loginUser(userData));
-    }
-    else{
-      console.log("invalid Phone")
+    } else {
+      toast.error("Please Enter Valid Phone Number");
     }
   };
 
@@ -59,7 +59,7 @@ function Login() {
     <div className="login">
       <div className="login_body">
         <div className="login_bodyRight">
-          <h1>To use ChatApp on your Please login</h1>
+          <h1>To use ChatApp, Please login</h1>
           <p>1. You need to Signin using your phone number.</p>
           <p>2. You can anytime logout from the Web.</p>
           <p>3. Login to continue using the Chat App</p>

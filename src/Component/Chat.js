@@ -9,6 +9,7 @@ import InsertEmoticonIcon from "@mui/icons-material/InsertEmoticon";
 import MicNoneIcon from "@mui/icons-material/MicNone";
 import { useSelector, useDispatch } from "react-redux";
 import { sendMessage } from "../Features/messageSlice";
+import { toast } from "react-toastify";
 
 function Chat(props) {
   const dispatch = useDispatch();
@@ -72,13 +73,52 @@ function Chat(props) {
         </div>
         <div className="chat_headerRight">
           <IconButton>
-            <SearchOutlinedIcon />
+            <SearchOutlinedIcon
+              onClick={() => {
+                toast("🔜 Coming Soon", {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "dark",
+                });
+              }}
+            />
           </IconButton>
           <IconButton>
-            <AttachFileIcon />
+            <AttachFileIcon
+              onClick={() => {
+                toast("🔜 Coming Soon", {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "dark",
+                });
+              }}
+            />
           </IconButton>
           <IconButton>
-            <MoreVertIcon />
+            <MoreVertIcon
+              onClick={() => {
+                toast("🔜 Coming Soon", {
+                  position: "top-right",
+                  autoClose: 5000,
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                  theme: "dark",
+                });
+              }}
+            />
           </IconButton>
         </div>
       </div>
@@ -109,7 +149,20 @@ function Chat(props) {
 
       <div className="chats_footer">
         <IconButton>
-          <InsertEmoticonIcon />
+          <InsertEmoticonIcon
+            onClick={() => {
+              toast("🔜 Coming Soon", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+            }}
+          />
         </IconButton>
         <form onSubmit={onSubmit}>
           <input
@@ -121,7 +174,20 @@ function Chat(props) {
           <button type="submit">send message</button>
         </form>
         <IconButton>
-          <MicNoneIcon />
+          <MicNoneIcon
+            onClick={() => {
+              toast("🔜 Coming Soon", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+            }}
+          />
         </IconButton>
       </div>
     </div>

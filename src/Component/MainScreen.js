@@ -12,6 +12,7 @@ function MainScreen() {
   const dispatch = useDispatch();
 
   const [messages, setMessages] = useState();
+  const [refresh, setRefresh] = useState(false);
   const auth = useSelector((state) => state.auth);
   const channels = useSelector((state) => state.message);
 
@@ -22,8 +23,9 @@ function MainScreen() {
     if (auth.isError) {
       console.log(auth.message);
     }
+    
     dispatch(getChannels(auth?.user?._id));
-  }, [auth.user, auth.isError, auth.message, navigator, channels]);
+  }, [auth.user, auth.isError, auth.message, navigator, refresh]);
 
   useEffect(() => {
     const pusher = new Pusher("82fd58c28e43b81024e2", {
@@ -39,12 +41,18 @@ function MainScreen() {
       channel.unbind_all();
       channel.unsubscribe();
     };
-  }, [messages]);
+  }, [messages, dispatch]);
 
   return (
     <div className="app">
       <div className="app_container">
-        <Sidebar channels={channels.channelData} setMessages={setMessages} />
+        <Sidebar
+          channels={channels.channelData}
+          setMessages={setMessages}
+          refreshChat={() => {
+            setRefresh(!refresh);
+          }}
+        />
 
         {messages ? <Chat selectedChat={messages} /> : <></>}
       </div>

@@ -1,5 +1,5 @@
 .login {
-  background: linear-gradient(180deg, #56bca6 30%, #c6c6c6 0%);
+  background: linear-gradient(180deg, #fbc334 30%, #fae194 0%);
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -11,6 +11,8 @@
   width: 80vw;
   background-color: rgb(239, 239, 239);
   display: flex;
+  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
 }
 
 .login_bodyRight {
@@ -74,4 +76,17 @@
 }
 span {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .login_body {
+    display: flex;
+    flex-direction: column;
+  }
+  .login_bodyRight {
+    border-bottom: 1px solid gray;
+  }
+  .form-group input {
+    width: 90%;
+  }
 }

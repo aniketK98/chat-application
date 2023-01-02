@@ -4,6 +4,7 @@ import "./Register.css";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser, reset } from "../Features/authSlice";
+import { toast } from "react-toastify";
 
 function Register() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ function Register() {
 
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      toast.error(message);
     }
     if (isSuccess || user) {
       navigate("/");
@@ -45,12 +46,12 @@ function Register() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const userData = { name, profilePic, phoneNumber:phone, password };
+    const userData = { name, profilePic, phoneNumber: phone, password };
     console.log(userData);
     if (validatePhoneNumber(phone)) {
       dispatch(registerUser(userData));
     } else {
-      console.log("invalid phone");
+      toast.error("Please Enter Valid Phone Number");
     }
   };
 
@@ -58,7 +59,7 @@ function Register() {
     <div className="register">
       <div className="register_body">
         <div className="register_bodyRight">
-          <h1>To use ChatApp on your Please login</h1>
+          <h1>To use ChatApp, Please login</h1>
           <p>1. You need to Signin using your phone number.</p>
           <p>2. You can anytime logout from the Web.</p>
           <p>3. Login to continue using the Chat App</p>

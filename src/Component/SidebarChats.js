@@ -3,6 +3,7 @@ import "./SidebarChats.css";
 import Avatar from "@mui/material/Avatar";
 import { useSelector } from "react-redux";
 
+
 function SidebarChats(props) {
   const { channel, selectChat } = props;
   const [seed, setSeed] = useState("");

@@ -10,9 +10,8 @@ const createChannel = expressAsyncHandler(async (req, res) => {
   const requestData = req.body;
   const firstUser = requestData[0];
   const secondUser = requestData[1];
-  let isChannelAlreadyExist = false;
+  var isChannelAlreadyExist = false;
   let channelModel;
-
   const channelList = await Channel.find({
     "channelUsers.user": firstUser.user,
   });
@@ -25,9 +24,7 @@ const createChannel = expressAsyncHandler(async (req, res) => {
     });
   }
 
-  if (isChannelAlreadyExist) {
-    return res.status(200).json(channelModel);
-  }
+  if (channelModel) return res.status(200).json(channelModel);
 
   channelModel = await Channel.create({ channelUsers: requestData });
   res.status(200).json(channelModel);

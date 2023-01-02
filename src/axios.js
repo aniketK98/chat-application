@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://localhost:8001/api",
+  baseURL: "http://192.168.29.196:8001/api",
 });
 
 const createUser = async (userData) => {

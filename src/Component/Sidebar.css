@@ -51,6 +51,7 @@
   flex: 1;
   background-color: white;
   overflow: scroll;
+  border-bottom-left-radius: 5px;
 }
 
 .sidebar_chats::-webkit-scrollbar {
@@ -64,4 +65,19 @@
 
 .sidebar_profile > h3 {
   margin-left: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    flex: 0.2;
+  }
+  .sidebar_chats {
+    max-height: 200px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .sidebar_chats::-webkit-scrollbar {
+    display: none;
+  }
 }

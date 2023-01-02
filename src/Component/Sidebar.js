@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Sidebar.css";
 import ChatIcon from "@mui/icons-material/Chat";
 import DonutLargeIcon from "@mui/icons-material/DonutLarge";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
+import LogoutIcon from "@mui/icons-material/Logout";
 import IconButton from "@mui/material/IconButton";
 import Avatar from "@mui/material/Avatar";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
@@ -10,9 +10,11 @@ import SidebarChats from "./SidebarChats";
 import { useDispatch, useSelector } from "react-redux";
 import httpMethods from "../axios";
 import { createChannel, getChannels } from "../Features/messageSlice";
+import { toast } from "react-toastify";
+import { logout } from "../Features/authSlice";
 
 function Sidebar(props) {
-  const { channels, setMessages } = props;
+  const { channels, setMessages, refreshChat } = props;
   const [seed, setSeed] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [searchResult, setSearchResult] = useState();
@@ -31,8 +33,7 @@ function Sidebar(props) {
 
   const createChat = (userData) => {
     setSearchInput("");
-    setSearchResult([userData]);
-    const user = dispatch(
+    dispatch(
       createChannel([
         {
           user: auth?.user?._id,
@@ -48,6 +49,7 @@ function Sidebar(props) {
     );
     dispatch(getChannels(auth?.user?._id));
     setSearchResult();
+    refreshChat();
   };
 
   return (
@@ -68,11 +70,28 @@ function Sidebar(props) {
           <IconButton>
             <ChatIcon />
           </IconButton>
-          <IconButton>
+          <IconButton
+            onClick={() => {
+              toast("🔜 Coming Soon", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+              });
+            }}
+          >
             <DonutLargeIcon />
           </IconButton>
-          <IconButton>
-            <MoreVertIcon />
+          <IconButton
+            onClick={() => {
+              dispatch(logout());
+            }}
+          >
+            <LogoutIcon />
           </IconButton>
         </div>
       </div>

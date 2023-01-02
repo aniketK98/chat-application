@@ -1,5 +1,5 @@
 .register {
-  background: linear-gradient(180deg, #56bca6 30%, #c6c6c6 0%);
+  background: linear-gradient(180deg, #ffd495 30%, #fffbca 0%);
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -11,6 +11,8 @@
   width: 80vw;
   background-color: rgb(239, 239, 239);
   display: flex;
+  box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 5px;
 }
 
 .register_bodyRight {
@@ -43,30 +45,6 @@
   margin-bottom: 40px;
 }
 
-.form-group {
-  margin-bottom: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.form-group input {
-  padding: 10px;
-  border-radius: 15px;
-  width: 400px;
-  border: 1px solid gray;
-}
-
-.form-group > button {
-  width: 300px;
-  padding: 10px;
-  color: #fff;
-  border-radius: 15px;
-  background-color: #000;
-  cursor: pointer;
-}
-
 .registerButton {
   padding: 5px;
   border: none;
@@ -74,4 +52,15 @@
 }
 span {
   text-decoration: underline;
+}
+
+@media screen and (max-width: 600px) {
+  .register_body {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+  }
+  .register_bodyRight {
+    border-bottom: 1px solid gray;
+  }
 }
