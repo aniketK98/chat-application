@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "http://192.168.29.196:8001/api",
+  // baseURL: "http://192.168.29.196:8001/api",
+  baseURL: "https://chat-app-backend-h7mt.onrender.com/api",
 });
 
 const createUser = async (userData) => {
